@@ -10,9 +10,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     process convert_to_webp: [{ quality: 80, method: 5 }]
 
     def full_filename(file)
-      return file if file.split('.').last == 'webp'
-
-      file + '.webp'
+      "#{version_name}_#{file}.webp"
     end
   end
 
