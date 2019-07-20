@@ -10,7 +10,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
     process convert_to_webp: [{ quality: 80, method: 5 }]
 
     def full_filename(file)
-      "#{version_name}_#{file}.webp"
+      build_webp_full_filename(file, version_name)
     end
   end
 
