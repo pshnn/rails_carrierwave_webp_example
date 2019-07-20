@@ -2,6 +2,8 @@
 
 # Used for image encoding in CarrierWave uploaders
 module WebPConverter
+  private
+
   def convert_to_webp(options = {})
     webp_path = "#{path}.webp"
 
@@ -14,5 +16,11 @@ module WebPConverter
       filename: webp_path,
       content_type: 'image/webp'
     )
+  end
+
+  def build_webp_full_filename(filename, version_name)
+    return "#{version_name}_#{filename}" if filename.split('.').last == 'webp'
+
+    "#{version_name}_#{filename}.webp"
   end
 end
